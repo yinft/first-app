@@ -1,12 +1,32 @@
 {
-  "pages":[
+  "pages": [
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/profile",
+    "pages/profile/profile"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle":"black"
-  }
-}
+    "navigationBarTitleText": "爱电影",               
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#D9DADA",
+    "selectedColor": "#2aac5e",
+    "backgroundColor": "#ffffff",
+    "list": [ 
+      {
+        "pagePath": "pages/index/index",
+        "text": "电影",
+        "iconPath": "img/film.png",
+        "selectedIconPath": "img/film-actived.png"
+      },
+      {
+        "pagePath": "pages/profile/profile",
+        "text": "我的",
+        "iconPath": "img/profile.png",
+        "selectedIconPath": "img/profile-actived.png"
+      }
+    ] 
+}}
