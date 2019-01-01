@@ -3,19 +3,21 @@
     "pages/index/index",
     "pages/logs/logs",
     "pages/profile",
-    "pages/profile/profile"
+    "pages/profile/profile",
+    "pages/list/list",
+    "pages/movie/movie"
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "爱电影",               
+    "navigationBarBackgroundColor": "#33CC52",
+    "navigationBarTitleText": "爱电影",
     "navigationBarTextStyle": "black"
   },
   "tabBar": {
     "color": "#D9DADA",
     "selectedColor": "#2aac5e",
     "backgroundColor": "#ffffff",
-    "list": [ 
+    "list": [
       {
         "pagePath": "pages/index/index",
         "text": "电影",
@@ -28,5 +30,6 @@
         "iconPath": "img/profile.png",
         "selectedIconPath": "img/profile-actived.png"
       }
-    ] 
-}}
+    ]
+  }
+}
