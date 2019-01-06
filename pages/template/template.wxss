@@ -1,1 +1,22 @@
 /* pages/template/template.wxss */
+.film-item{
+  width:110px;
+  display:inline-block;
+  margin:0 10px 16px 10px;
+
+}
+.film-image{
+  width:100px;
+  height:147px;
+  display: block;
+}
+.film-title{
+  font-size: 0.6rem;
+  font-weight: 600;
+  line-height: 0.8;
+}
+.film-rate{
+  font-size: 0.4rem;
+  display: block;
+  line-height: 0.7;
+}

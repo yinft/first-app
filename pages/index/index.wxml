@@ -1,11 +1,18 @@
 <!--index.wxml-->
-<view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
+<import src="../template/template.wxml" />
+<view class="film-topcontainer" style="display: flex;flex-direction: column;">  
+<view class="film-container" wx:for-items="{{films}}" wx:for-item="filminfo">
+  <view class="film-header" scroll-x="false">
+     <text class="list-title">{{filminfo.title}}</text>
+     <button bindtap="toView" data-type="{{filminfo.type}}" class="more-btn" plain="false">更多></button>
   </view>
+  <view class="filmlist-container">
+
+    <scroll-view scroll-x="true" class="filmlist">
+      <template is="movieThumb" wx:for-items="{{filminfo.data}}"  wx:for-item="film" wx:key="id" data="{{...film}}">   
+      </template>
+    </scroll-view>  
+  </view> 
   
+</view>  
 </view>
