@@ -8,43 +8,49 @@ Page({
     userInfo: {},
     films: [{}, {}, {}]
   },
+
+  toView: function (e) {
+    var temp = e.currentTarget.dataset;
+    wx.navigateTo({
+      url: '../list/list?type=' + temp.type
+    })
+  },
+  detail: function (e) {
+    var data = e.currentTarget.dataset;//获取当前组件上由data-开头的自定义属性组成的集合
+    wx.navigateTo({
+      url: '../movie/movie?id=' + data.id + '&title=' + data.title
+    })
+  },
   onLoad: function () {
     wx.showLoading({
       title: '全力加载中...',
     })
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      })
-    } else if (this.data.canIUse){
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
+    var that = this;
+    var typelist = ["in_theaters", "coming_soon", "top250"];
+    var titlelist = ["正在热映", "即将上映", "TOP250电影"];
+    for (let i = 0; i < typelist.length; i++) {
+      var type = typelist[i];
+      app.getFilminfo(type, 0, 8, function (res) {
+        wx.hideLoading();
+        var data = res.data;
+        data.subjects.map(function (item) {
+          if (item.title.length > 8) {
+            item.title = item.title.slice(0, 7) + "...";
+          }
+          if (item.rating.average >= 9.5) {
+            item.rating.star = "star10";
+          } else {
+            item.rating.star = "star" + Math.round(item.rating.average);
+          }
+          console.log(item.rating.star);
         })
-      }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
-        }
+        that.data.films[i] = { title: titlelist[i], data: data.subjects, type: typelist[i] };
+        that.setData({
+          films: that.data.films
+        });
+        console.log(that.data.films);
       })
     }
+
   },
-  getUserInfo: function(e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
-    })
-  }
 })

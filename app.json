@@ -9,7 +9,7 @@
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#33CC52",
     "navigationBarTitleText": "爱电影",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "white"
   },
   "tabBar": {
     "color": "#D9DADA",
