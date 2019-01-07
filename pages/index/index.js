@@ -42,7 +42,7 @@ Page({
           } else {
             item.rating.star = "star" + Math.round(item.rating.average);
           }
-          console.log(item.rating.star);
+          console.log("star+"+item.rating.star);
         })
         that.data.films[i] = { title: titlelist[i], data: data.subjects, type: typelist[i] };
         that.setData({
